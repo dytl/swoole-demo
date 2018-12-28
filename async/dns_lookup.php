@@ -2,18 +2,18 @@
 /**
  * 域名解析  dns lookup
  */
+//待解析域名
 const DOMAIN_ADDRESS = 'www.80soho.com';
 
 swoole_async_set(array(
-	'use_async_resolver' => true,
-    'disable_dns_cache' => true,
-    'dns_lookup_random' => true,
-    'dns_server' => '114.114.114.114',
+	'use_async_resolver' => true,  //启用异步IO的DNS查询
+    'disable_dns_cache' => true,  //关闭DNS缓存
+    'dns_lookup_random' => true,  //DNS随机
+    'dns_server' => '114.114.114.114',  //指定DNS服务器
 ));
 
-dns_lookup("www.sina.com.cn",function($host,$ip){
-	echo "{$host} resolve to {$ip}";
-});
+//原生PHP写法
+echo gethostbyname(DOMAIN_ADDRESS).PHP_EOL;;
 
 //异步回调
 swoole_async_dns_lookup(DOMAIN_ADDRESS,function($host,$ip){
