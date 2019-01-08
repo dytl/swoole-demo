@@ -20,7 +20,7 @@ swoole_async_dns_lookup(DOMAIN_ADDRESS,function($host,$ip){
 	echo  DOMAIN_ADDRESS." resolve to {$ip}".PHP_EOL;
 });
 
-//协程
+//协程b
 go(function(){
 	echo DOMAIN_ADDRESS.':'.swoole_async_dns_lookup_coro(DOMAIN_ADDRESS).PHP_EOL;
 });
